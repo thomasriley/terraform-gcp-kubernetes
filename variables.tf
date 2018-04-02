@@ -33,3 +33,14 @@ variable "min_master_version" {
   description = "The minimum version of the master"
   default     = "1.9.4-gke.1"
 }
+
+variable "preemptible" {
+  description = "A boolean that represents whether or not the underlying node VMs are preemptible"
+  default     = true
+}
+
+variable "disk_size_gb" {
+  type        = "string"
+  description = "Size of the disk attached to each node, specified in GB"
+  default     = "10"
+}

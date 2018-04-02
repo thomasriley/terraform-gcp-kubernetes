@@ -10,6 +10,9 @@ resource "google_container_cluster" "kubernetes" {
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
     ]
+
+    preemptible  = "${var.preemptible}"
+    disk_size_gb = "${var.disk_size_gb}"
   }
 
   min_master_version = "${var.min_master_version}"
