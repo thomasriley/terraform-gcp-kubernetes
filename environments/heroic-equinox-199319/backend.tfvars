@@ -1,0 +1,1 @@
+bucket="terraform-state-heroic-equinox-199319-my-kubernetes-cluster"

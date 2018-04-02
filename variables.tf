@@ -1,7 +1,7 @@
 variable "gcp_project" {
   type        = "string"
   description = "GCP Project ID"
-  default     = "heroic-equinox-199319"
+  default     = ""
 }
 
 variable "gcp_region" {
@@ -13,7 +13,7 @@ variable "gcp_region" {
 variable "cluster_name" {
   type        = "string"
   description = "Name of the Kubernetes cluster"
-  default     = "my-kubernetes-cluster"
+  default     = ""
 }
 
 variable "kubernetes_gcp_zone" {

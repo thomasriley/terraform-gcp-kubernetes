@@ -1,8 +1,3 @@
-provider "google" {
-  project = "${var.gcp_project}"
-  region  = "${var.gcp_region}"
-}
-
 resource "google_container_cluster" "kubernetes" {
   name               = "${var.cluster_name}"
   zone               = "${var.kubernetes_gcp_zone}"
