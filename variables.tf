@@ -36,7 +36,7 @@ variable "min_master_version" {
 
 variable "preemptible" {
   description = "A boolean that represents whether or not the underlying node VMs are preemptible"
-  default     = true
+  default     = false
 }
 
 variable "disk_size_gb" {
