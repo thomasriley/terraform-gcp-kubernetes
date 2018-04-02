@@ -14,7 +14,7 @@ jobs:
           command: terraform init -backend-config=environments/${TERRAFORM_ENVIRONMENT}/backend.tfvars
       - run:
           name: Validate Terraform code
-          command: terraform validate
+          command: terraform validate -var-file=environments/${TERRAFORM_ENVIRONMENT}/terraform.tfvars
   plan-and-apply:
     docker:
       - image: hashicorp/terraform:0.11.5
