@@ -1,4 +1,5 @@
 gcp_project="tr-development"
 cluster_name="kubernetes"
-initial_node_count="1"
+min_node_count="1"
+max_node_count="3"
 preemptible="true"

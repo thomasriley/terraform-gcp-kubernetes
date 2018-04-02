@@ -16,22 +16,28 @@ variable "cluster_name" {
   default     = ""
 }
 
-variable "kubernetes_gcp_zone" {
-  type        = "string"
+variable "gcp_zones" {
+  type        = "list"
   description = "Zone to launch the GKE cluster in"
-  default     = "europe-west2-a"
+  default     = ["a", "b", "c"]
 }
 
-variable "initial_node_count" {
+variable "min_node_count" {
   type        = "string"
-  description = "Number of nodes in the cluster"
+  description = "Number min of nodes in the cluster"
+  default     = "1"
+}
+
+variable "max_node_count" {
+  type        = "string"
+  description = "Number max of nodes in the cluster"
   default     = "3"
 }
 
 variable "min_master_version" {
   type        = "string"
   description = "The minimum version of the master"
-  default     = "1.9.4-gke.1"
+  default     = "1.9.6-gke.0"
 }
 
 variable "preemptible" {
