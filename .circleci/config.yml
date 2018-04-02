@@ -1,0 +1,44 @@
+version: 2
+jobs:
+  validate:
+    docker:
+      - image: hashicorp/terraform:0.11.5
+    working_directory: ~/terraform
+    steps:
+      - checkout
+      - run:
+          name: Init Terraform
+          command: terraform init -backend-config=environments/${TERRAFORM_ENVIRONMENT}/backend.tfvars
+      - run:
+          name: Validate Terraform code
+          command: terraform validate
+  plan-and-apply:
+    docker:
+      - image: hashicorp/terraform:0.11.5
+    working_directory: ~/terraform
+    steps:
+      - checkout
+      - run:
+          name: Init Terraform
+          command: terraform init -backend-config=environments/${TERRAFORM_ENVIRONMENT}/backend.tfvars
+      - run:
+          name: Create a Terraform plan
+          command: terraform plan -var-file=environments/${TERRAFORM_ENVIRONMENT}/terraform.tfvars -out=terraform.plan
+      - run:
+          name: Apple the Terraform plan
+          command: terraform apply terraform.plan
+
+workflows:
+  version: 2
+  plan-and-apply:
+    jobs:
+      - validate:
+          filters:
+            branches:
+              only: master
+      - plan-and-apply:
+          requires:
+            - validate
+          filters:
+            branches:
+              only: master
