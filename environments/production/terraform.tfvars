@@ -1,0 +1,5 @@
+gcp_project="tr-production"
+cluster_name="kubernetes"
+min_node_count="1"
+max_node_count="3"
+preemptible="true"
