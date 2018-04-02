@@ -7,6 +7,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Init GCP
+          command: echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
+      - run:
           name: Init Terraform
           command: terraform init -backend-config=environments/${TERRAFORM_ENVIRONMENT}/backend.tfvars
       - run:
@@ -18,6 +21,9 @@ jobs:
     working_directory: ~/terraform
     steps:
       - checkout
+      - run:
+          name: Init GCP
+          command: echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
       - run:
           name: Init Terraform
           command: terraform init -backend-config=environments/${TERRAFORM_ENVIRONMENT}/backend.tfvars
